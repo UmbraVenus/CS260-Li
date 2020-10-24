@@ -1,0 +1,68 @@
+/*
+    Name:       Shijie Ren
+    Instructor: Li Liang
+    Class:      CS260
+    Assignment: Project2/Design.txt
+*/
+
+Data file (2, one for line, one for promotional)
+
+Customer(Group)
+    ==> Class with Information
+Individual
+    ==> Class with Information
+
+Line/Queue 
+    ==> Circular Linked List
+
+    Group 
+        ==> Node
+            = name of the group
+            = number of people in group
+            = accomodation? (wheel chair or kiddie chair)
+            = bool of if the group would like to receive promotional materials
+        
+Stack 
+    ==> Array
+        = name/email address
+
+Queue: (Circular Linked List)
+
+Enqueue(add at the back), 
+Dequeue(delete at front), 
+peek(next group), 
+display(get size)
+
+Stack: (Array)
+push(when they are seated), 
+pop (then saved to a data file), 
+peek, 
+display(get size),
+
+Menu, this time I am not going to complicate the app by promoting in app.cpp. Instead I will move the prompt to the implementation of stack and queue
+    = load queue
+    = Display Queue
+
+1. Add group to queue.
+    = Enqueue
+    
+2. Seat the front queue and get interest in promotions.
+    = Dequeue
+    = If interested in promotion
+        => add to stack
+    = If not interested
+    
+3. Peek the information of next group.
+    = Peek
+
+4. Display the number of waiting groups
+    = getSize
+
+5. Handing out promotional materials.
+    = display stack.txt
+    = Pop in stack
+    = save to contacted.txt
+
+6. Display all customers contacted for promotions.
+    = load from contacted.txt
+    = display contacted.txt

@@ -1,0 +1,24 @@
+First Group name
+14
+none
+yes
+SEONG Group
+987
+none
+yes
+SEONG2 Group
+98
+none
+no
+SEONG3 Group
+98
+WheelChair Please
+yes
+Happy
+7
+Kiddie Chair
+yes
+Testing Group 
+8
+There is none
+yes

@@ -1,0 +1,83 @@
+bool LinkedList::del(char ch){
+    cout << "...Calling delete method on..." << ch << endl;
+    node *tmp = head;
+    if (LinkedList::find(ch))
+    {
+        if (tmp->data == ch){
+            head = tmp->next;
+            delete tmp;
+            cout << ch << " deleted" << endl;
+            return true;
+        }
+        else {
+            while (tmp!= NULL){ 
+                if (tmp->data == ch){
+                    node *curr = tmp;
+                    curr->prev->next = tmp->next;
+                    curr->next->prev = tmp->prev;
+                    delete tmp;
+                    cout << ch << " deleted" << endl;
+                    return true;
+                }
+                tmp = tmp->next;
+            }
+            cout << "Unable to delete character" << endl;
+            return false;
+        }
+    }
+    cout << "No character found" << endl;
+    return false;
+}
+
+...Calling add method on...x
+...Calling add method on...y
+...Calling add method on...z
+
+Displaying the list: 
+x
+y
+z
+
+Displaying the reversed list: 
+z
+y
+x
+
+...Calling find method on...y
+found y
+...Calling delete method on...y
+...Calling find method on...y
+y deleted
+
+Displaying the list: 
+x
+z
+
+Displaying the reversed list: 
+z
+x
+
+...Calling find method on...y
+did not find y
+...Calling delete method on...x
+...Calling find method on...x
+x deleted
+
+Displaying the list: 
+z
+
+Displaying the reversed list: 
+z
+
+...Calling find method on...y
+did not find y
+...Calling delete method on...z
+...Calling find method on...z
+z deleted
+
+Displaying the list: 
+
+Displaying the reversed list: 
+
+...Calling find method on...y
+did not find y

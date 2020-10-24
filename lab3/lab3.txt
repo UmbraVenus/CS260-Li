@@ -1,0 +1,54 @@
+bool LinkedList::del(char ch){
+    Node *tmp = head;
+    if (head->data == ch)
+    {
+        head = tmp->next;
+        delete tmp;
+        return true;
+    } else{
+        del(head->next, ch);
+    }
+}
+
+bool LinkedList::del(Node *&first, char ch){
+    if (find(ch)){
+        Node *curr = first;
+        curr->next->prev = curr->prev;
+        curr->prev->next = curr->next;
+        delete first;
+        return true;
+    }  
+    else{
+        if (first->next){
+            first = first->next;
+            del(ch);
+        }
+        else{
+            return false;
+        }
+    }
+}
+
+Adding x
+
+Adding y
+
+Adding z
+
+printing...
+x
+y
+z
+found y
+
+printing...
+x
+z
+did not find y
+
+printing...
+z
+did not find y
+
+printing...
+did not find y

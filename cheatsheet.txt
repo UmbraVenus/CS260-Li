@@ -1,0 +1,14 @@
+ syccuxas01.pcc.edu
+
+ cp ~lliang/cs260/labs/lab1/hello.cpp hello.cpp
+
+g++ -g -std=c++11 –o myhello hello.cpp
+
+./myhello
+
+rm myhello
+
+g++ –std=c++11 –Wall –g –o exectutable-file *.cpp
+gdb executable-file
+
+Scp -r
