@@ -24,6 +24,7 @@ public:
     char *getEmail();
     void setEmail(char *email);
     void setFullName(char *name);
+    friend ostream& operator<< (ostream& out, Individual& aStudent);	
 
 private:
 	char *fullName;

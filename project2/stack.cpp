@@ -84,26 +84,27 @@ void Stack::expand()
 	aStack = tempStack;
 }
 
-Individual* Stack::pop()
+bool Stack::pop(Individual & anIndividual)
 {
-	if(!top==0){
-		Individual *anIndividual = new Individual;
-		anIndividual = aStack[top - 1];
-		delete aStack[top - 1];
-		top--;
-		return anIndividual;
+	if(top == 0){
+		return false;
 	}
-	
+	anIndividual.setEmail(aStack[top - 1]->getEmail());
+	anIndividual.setFullName(aStack[top - 1]->getFullName());
+	delete aStack[top - 1];
+	top--;
+	return true;
 }
 
-void Stack::displayStack()
+ostream& operator<< (ostream& out, Stack& srcStack)
 {
-	cout << endl << "Displaying the stack ..." << endl;
-	for(int i=0; i< top; i++)
+	out << endl << "Displaying the stack ..." << endl;
+	for(int i=0; i<srcStack.top; i++)
 	{
-		cout << aStack[i]->getFullName() << endl;
-		cout << "==== " << aStack[i]->getEmail() << endl;
+		out << srcStack.aStack[i]->getFullName() << endl;
+		out << srcStack.aStack[i]->getEmail() << endl; 
 	}
+	return out;
 }
 
 void Stack::loadFromStackFile(char * fileName)
@@ -111,7 +112,7 @@ void Stack::loadFromStackFile(char * fileName)
 	ifstream 	in;
 	char		currName[MAX_CHAR];
 	char currEmail[MAX_CHAR];
-	Individual *newIndividual = new Individual;
+	
 
 	in.open(fileName);
 	if(!in)
@@ -123,7 +124,7 @@ void Stack::loadFromStackFile(char * fileName)
 	while(!in.eof()){
       in.getline(currName, MAX_CHAR);
       in.getline(currEmail, MAX_CHAR);
-      
+      Individual *newIndividual = new Individual;
 	  newIndividual->setFullName(currName);
 	  newIndividual->setEmail(currEmail);
 	  push(*newIndividual);

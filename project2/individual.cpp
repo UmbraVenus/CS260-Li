@@ -58,3 +58,9 @@ void Individual::setFullName(char *fullName){
 	this->fullName = new char[strlen(fullName)+1];
 	strcpy(this->fullName, fullName);
 }
+
+ostream& operator<< (ostream& out, Individual& aStudent)
+{
+	out << aStudent.getFullName() << '\t' << aStudent.getEmail() << endl;
+	return out;
+}

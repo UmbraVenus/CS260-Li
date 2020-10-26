@@ -1,0 +1,39 @@
+/*
+    Name:       Shijie Ren
+    Instructor: Li Liang
+    Class:      CS260
+    Assignment: Project2/Review.txt
+*/
+
+
+1) How well did the data structure selected perform for the assigned application? 
+
+I chose to implement a circular singly linked list for this queue, and an array based implementation for the stack. I think it does the job well, though I am sure I could implement the stack better. In the past, I have been used to the high level abstraction of vector class or list in python, that the whole concept of char array and other restraints could get some used to. But once I got familiar with it, it’s easier to understand it from a data structure point of view.
+
+2) Would a different data structure work better? If so, which one and why…
+
+In the last project, I concluded that doubly linked list is unnecessary for my project1, and a singly linked list would suffice. Therefore, I chose to implement my circular linked list in a singly linked list fashion in this project, and I think it’s easier and I have had less bugs. As for the dynamically allocated array, I am not sure what I could have done differently, but I feel like there is room for improvement for sure.
+
+3) What was efficient about your design and use of the data structure?
+
+My design is to have 3 text files, one for queue of customer groups, one for Stack of individuals to send promotions to, and last one for Stack of individuals that have already been contacted. In a way, I am trying to have the queue and stack not interacting with each other, even though it seems like the data could be linked, they are not actually linked.
+
+
+4) What was not efficient?
+
+I think I really could use a different way to read data from text file, or I should use a different format to write to it. The current way I have been doing is prone to bugs containing blank lines.
+
+5) What would you do differently if you had more time to solve the problem?
+
+I would try to implement array in a totally different way, maybe I can look into the standard documentation of vectors, and see how they did it.
+
+==== Review and Thoughts ====
+
+I will admit that I have not been using gdb up to this point till my practice midterm because I like the visual studio code interface on my Mac better. But had I known it is so awesome, I would have used it for this project instead of wasting many hours searching weird messages that could or could not be my project’s problems or the Mac system. I tried to install gdb on my Mac before, for some reason it would not let me sign the verification.
+
+I particularly feel like I should really try to implement it, at least at first, in a way where I can visualize, because most likely it’s segmentation fault.
+
+For project2, since there are already clear instructions on which data structures to use, and what functions to have etc, I didn’t have a struggle with designing my queue and stacks in ways that can link all the data together. 
+
+However, in the testing part, I have always need to implement most of the functions in order to even begin the test, and see if my program is working properly. I would love to have a better test plan that makes sure I am not wasting my time editing the wrong functions, or implementing based on the wrong ones. I would love to have a better 
+Test plan that allows to test bit by bit.

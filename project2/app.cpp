@@ -39,7 +39,7 @@ int main(){
     ContactedStack.loadFromStackFile(contacted);
 
     Line.displayQueue();
-    PromoteStack.displayStack();
+    cout << PromoteStack << endl;
 
     int choice = mainMenu();
 
@@ -82,15 +82,27 @@ int main(){
 			case 5: 
             {
                 cout << choice5 << endl;
-                Individual *newIndividual = new Individual;
-                newIndividual = PromoteStack.pop();
-                ContactedStack.push(*newIndividual);
+                cout << PromoteStack << endl;
+                Individual newIndividual;
+                while(PromoteStack.pop(newIndividual)){
+                    cout << "popping " << newIndividual << endl;
+                    Individual anIndividual;
+                    anIndividual = newIndividual;
+                    ContactedStack.push(anIndividual);
+                    
+                    cout << PromoteStack << endl;
+                    cout << ContactedStack << endl;
+                }
+                ContactedStack.saveToStackFile(contacted);
+                cout << ContactedStack << endl;
+                
+                PromoteStack.saveToStackFile(stackFile);
                 break;
             }
             case 6: 
             {
                 cout << choice6 << endl;
-                ContactedStack.displayStack();
+                cout << ContactedStack << endl;
                 break;
             }
             case 7: //exit

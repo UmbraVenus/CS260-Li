@@ -5,64 +5,48 @@
     Assignment: Project2/Design.txt
 */
 
-Data file (2, one for line, one for promotional)
 
-Customer(Group)
-    ==> Class with Information
-Individual
-    ==> Class with Information
+======= Design ====== 
 
-Line/Queue 
-    ==> Circular Linked List
+For this project, I did what was required that is to implement a queue ADT with a circular linked list, and an array-based Stack that is dynamically located. 
 
-    Group 
-        ==> Node
-            = name of the group
-            = number of people in group
-            = accomodation? (wheel chair or kiddie chair)
-            = bool of if the group would like to receive promotional materials
-        
-Stack 
-    ==> Array
-        = name/email address
+I also designed 2 additional classes: customer(groups to be added to queue), as well as individual(person’s info to be added to stack)
 
-Queue: (Circular Linked List)
+1) What functions your ADT will need to have
 
-Enqueue(add at the back), 
-Dequeue(delete at front), 
-peek(next group), 
-display(get size)
+For Customer and Individual class, I would need the usual constructors/destructors, as well as getters and setters. They are more or less objects to store data.
 
-Stack: (Array)
-push(when they are seated), 
-pop (then saved to a data file), 
-peek, 
-display(get size),
+For my Queue implementation, I would need to have enqueue function(one of which is a prompt to call the real enqueue function, after asking customers the information of the group), a dequeue function which seats the front group, peek, get the size of the queue, load queue from queue file, and save queue to a txt file.
 
-Menu, this time I am not going to complicate the app by promoting in app.cpp. Instead I will move the prompt to the implementation of stack and queue
-    = load queue
-    = Display Queue
+For my Stack implementation, I would need to have push function(one of which is a prompt to call the real push function, after asking individual of their email and name), a dequeue function which seats the front group, peek, get the size of the queue, load queue from queue file, and save queue to a txt file.
 
-1. Add group to queue.
-    = Enqueue
-    
-2. Seat the front queue and get interest in promotions.
-    = Dequeue
-    = If interested in promotion
-        => add to stack
-    = If not interested
-    
-3. Peek the information of next group.
-    = Peek
+2) How each function will report success/failure back to the calling routine
 
-4. Display the number of waiting groups
-    = getSize
+I wrote each function with distinct messages that would be displayed for each procedure, so if things go wrong I know which step it is.
 
-5. Handing out promotional materials.
-    = display stack.txt
-    = Pop in stack
-    = save to contacted.txt
+3) How each function will shield the client program from the details of the data structure
 
-6. Display all customers contacted for promotions.
-    = load from contacted.txt
-    = display contacted.txt
+For each function, the most important thing is to not let the client program access the node structure. 
+
+===== Test Plan =====
+I created a user interface that can be accessed by pressing 1-7. 
+
+At first, a queue will be populated from a txt file; a promotion Stack will be populated serves as a list of individuals to be contacted, and a contacted stack serves as a list of individuals that have already been contacted.
+
+When a user enters 1, they add a group to queue.
+	= They would call the enqueue function on the current queue, the prompt would pop up to have them input the information, then call the enqueue node function; the queue would then be saved to text file, at the same time, the queue would also be displayed.
+
+When the user enters 2, they would seat the front queue, as well as seeing if there is a need to push them to the Stack, and if there is, we would push them to Stack.
+	= Check first to see if the queue is empty or not, if not empty, then we can seat the first group, and if their preference is to be contacted, we can dequeue the group, ask them for individual email and name, then push that individual information to the Promote Stack awaiting promotion; the Promote Stack and the Queue would be saved to text file.
+
+When the user enters 3, they can peek the information of the next group that has not yet been seated (which is the first group in queue)
+
+When the user enters 4, they can choose to see how many groups are currently in line.
+
+When the user enters 5, All customers in Promotion Stack would be contacted for promotions, and add to Contacted Customer Stack.
+
+When the user enters 6, they should be able to display all customer contacted for Promotions already.
+
+When the user enters 7, the program will exit.
+
+The mainMenu will keep popping up until the user chooses to exit by pressing 7.

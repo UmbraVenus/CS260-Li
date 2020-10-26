@@ -1,0 +1,190 @@
+#include "dlist.h"
+#include <iostream>
+using namespace std;
+//put the implmenetation of the required functions here
+/* place your prototype here */
+// recursively compute and return the number of nodes in the doublylinked list.
+int nums = 0;
+int count(node *curr){
+    cout << " === Counting the Doubly Linked List nodes" << endl;
+    if (!curr->next){
+        cout << curr->data << endl;
+        ++nums;
+        cout << "Counting" << nums << endl;
+        cout << "=== Finished Counting" << endl;
+        return nums;
+    }else{
+        ++nums;
+        cout << curr->data << endl;
+        cout << "Counting" << nums << endl;
+        return count(curr->next);
+    }
+}
+
+// recursively insert newInt at index “position” where index starts from 0
+void insert(node *&head, int newInt, int position){
+    cout << "=== Calling insert Recursively..." << endl;
+    if(!head || position < 0){
+        cout << "Error Inserting" << endl;
+    }
+    else{
+        return insert(head, newInt, 0, position);
+    }
+}
+
+void insert(node *currHead, int newInt, int currPosition, int position){
+    if(!currHead){
+        cout << "Finished Inserting" << endl;
+    }
+    if (currPosition == position){
+        node * newNode = new node;
+	newNode->data = newInt;
+		newNode->next = currHead;
+		newNode->previous = currHead->previous;
+		if(currHead->previous)
+		{
+			currHead->previous->next = newNode;
+		}
+		currHead->previous = newNode;
+        cout << newInt << "inserted at " << currPosition << endl;
+    }
+else{
+
+    insert(currHead->next, newInt, ++currPosition, position);
+}
+}
+
+// recursivelyremove the integer at index “position” and return it.
+int remove(node *&head, int position){
+    if (position < 0){
+        cout << "Invalid Position" << endl;
+    }
+    else{
+        remove(head, 0, position);
+    }
+}
+
+int remove(node *currHead, int currPosition, int position){
+    int datanum;
+    if(!currHead){
+        cout << "End of Linked List" << endl;
+        cout << "Error" << endl;
+        return 0;
+    }
+    if(currPosition==position){
+        cout << "Found at " << position << endl;
+        node *temp = currHead;
+        if(currHead->next){
+            currHead->previous->next = temp->next;
+            currHead->next->previous = temp->previous;
+        }
+        else{
+            currHead->previous->next = nullptr;
+        }
+        datanum = currHead->data;
+        cout << "Removing " << currHead->data << endl;
+        delete (currHead);
+        return datanum;
+    }
+    return remove(currHead->next, ++currPosition, position);
+}
+#include "dlist.h"
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    node * head = NULL;
+    build(head);
+    display(head);
+
+    //PLEASE PUT YOUR CODE HERE to call the function assigned
+    cout << "\nCounting Function in Main..." << endl;
+    cout << count(head) << endl;
+    cout << "\nInserting number 3 at Position 2" << endl;
+    insert(head, 3, 2);
+    display(head);
+    cout << "\nRemoving the int at Position 1" << endl;
+    cout << remove(head, 1) << " removed " << endl;
+    display(head);
+    cout << "\nInserting number 5 at Position 2" << endl;
+    insert(head, 5, 2);
+    display(head);
+    destroy(head);    
+    return 0;
+}
+
+Here is the original list: 2 -> 56 -> 2 -> 50 -> 2 -> 59 -> 7 -> 13 -> 2
+
+This list contains 9 number of items 
+
+Counting Function in Main...
+ === Counting the Doubly Linked List nodes
+2
+Counting1
+ === Counting the Doubly Linked List nodes
+56
+Counting2
+ === Counting the Doubly Linked List nodes
+2
+Counting3
+ === Counting the Doubly Linked List nodes
+50
+Counting4
+ === Counting the Doubly Linked List nodes
+2
+Counting5
+ === Counting the Doubly Linked List nodes
+59
+Counting6
+ === Counting the Doubly Linked List nodes
+7
+Counting7
+ === Counting the Doubly Linked List nodes
+13
+Counting8
+ === Counting the Doubly Linked List nodes
+2
+Counting9
+=== Finished Counting
+9
+
+Inserting number 3 at Position 2
+=== Calling insert Recursively...
+3inserted at 2
+
+
+The resulting list is... 2 -> 56 -> 3 -> 2 -> 50 -> 2 -> 59 -> 7 -> 13 -> 2
+
+
+Now backwards: 2 -> 13 -> 7 -> 59 -> 2 -> 50 -> 2 -> 3 -> 56 -> 2
+
+This list contains 10 number of items 
+The sum of all data is: 196
+
+Removing the int at Position 1
+Found at 1
+Removing 56
+56 removed 
+
+
+The resulting list is... 2 -> 3 -> 2 -> 50 -> 2 -> 59 -> 7 -> 13 -> 2
+
+
+Now backwards: 2 -> 13 -> 7 -> 59 -> 2 -> 50 -> 2 -> 3 -> 2
+
+This list contains 9 number of items 
+The sum of all data is: 140
+
+Inserting number 5 at Position 2
+=== Calling insert Recursively...
+5inserted at 2
+
+
+The resulting list is... 2 -> 3 -> 5 -> 2 -> 50 -> 2 -> 59 -> 7 -> 13 -> 2
+
+
+Now backwards: 2 -> 13 -> 7 -> 59 -> 2 -> 50 -> 2 -> 5 -> 3 -> 2
+
+This list contains 10 number of items 
+The sum of all data is: 145
