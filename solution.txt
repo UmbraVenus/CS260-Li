@@ -1,0 +1,159 @@
+
+Here is the original list: 2 -> 8 -> 2 -> 2 -> 31 -> 18 -> 23 -> 2
+
+This list contains 8 number of items 
+
+Counting Even Function in Main...
+ === Counting the Doubly Linked List EVEN nodes
+2
+Counting 1 even. 
+ === Counting the Doubly Linked List EVEN nodes
+8
+Counting 2 even. 
+ === Counting the Doubly Linked List EVEN nodes
+2
+Counting 3 even. 
+ === Counting the Doubly Linked List EVEN nodes
+2
+Counting 4 even. 
+ === Counting the Doubly Linked List EVEN nodes
+31
+Counting 4 even. 
+ === Counting the Doubly Linked List EVEN nodes
+18
+Counting 5 even. 
+ === Counting the Doubly Linked List EVEN nodes
+23
+Counting 5 even. 
+ === Counting the Doubly Linked List EVEN nodes
+2
+Counting 6 even. 
+=== Finished Counting
+6
+
+Removing the all even nodes
+Removing 2 even. 
+Removing 8 even. 
+Removing 2 even. 
+Removing 2 even. 
+Removing 18 even. 
+Removing 2 even. 
+=== Finished Removing6 Even Nodes
+6 removed 
+
+
+The resulting list is... 31 -> 23
+
+
+Now backwards: 23 -> 31
+
+This list contains 2 number of items 
+The sum of all data is: 54
+
+
+The resulting list is... 31 -> 23
+
+
+Now backwards: 23 -> 31
+
+This list contains 2 number of items 
+The sum of all data is: 54
+
+
+#include "dlist.h"
+#include <iostream>
+using namespace std;
+
+//put the implmenetation of the required functions here
+int nums = 0;
+int countEven(node *curr)
+{
+    cout << " === Counting the Doubly Linked List EVEN nodes" << endl;
+    if (!curr->next){
+        cout << curr->data << endl;
+        if(curr->data % 2 == 0){
+            ++nums;
+        }
+        cout << "Counting " << nums  << " even. " << endl;
+        cout << "=== Finished Counting" << endl;
+        return nums;
+    }else{
+        cout << curr->data << endl;
+        if(curr->data % 2 == 0){
+            ++nums;
+        }
+        cout << "Counting " << nums  << " even. " << endl;
+        return countEven(curr->next);
+    }
+}
+
+int removeEven(node *&Head){
+    if (!Head){
+        cout << "No LIST!!!! Error!!!!!!!" << endl;
+        return 0;
+    }
+    
+        removeEven(Head, 0);
+    
+}
+
+int removeEven(node *currHead, int nums){
+    if (!currHead){
+        cout << "End of Linked List" << endl;
+        cout << "Removed " << nums << "nodes." << endl;
+        return nums;
+    }
+if (currHead->data %2 == 0 && !currHead->previous){
+        currHead->next->previous = NULL;
+	
+	cout << "Removing " << currHead->data  << " even. " << endl;
+        return removeEven(currHead->next,nums);
+}
+    if (!currHead->next){
+        if(currHead->data % 2 == 0){
+            cout << "Removing " << currHead->data  << " even. " << endl;
+            currHead->previous->next = NULL;
+            ++nums;
+            delete (currHead);
+        }
+        cout << "=== Finished Removing" << nums << " Even Nodes" << endl;
+        return nums;
+    }
+    else{	
+		if(currHead->data %2 == 0){
+			node *temp = currHead;
+			cout << "Removing " << currHead->data  << " even. " << endl;
+                        currHead->previous->next = temp->next;
+                        currHead->next->previous = temp->previous;
+                        ++nums;
+                        delete (currHead);
+		}
+        	return removeEven(currHead->next, nums);
+	
+    }
+}
+
+
+#include "dlist.h"
+using namespace std;
+
+int main()
+{
+    node * head = NULL;
+    build(head);
+    display(head);
+
+    //PLEASE PUT YOUR CODE HERE to call the function assigned
+    cout << "\nCounting Even Function in Main..." << endl;
+    cout << countEven(head) << endl;
+
+    cout << "\nRemoving the all even nodes" << endl;
+    cout << removeEven(head) << " removed " << endl;
+    display(head);
+
+
+    display(head);
+    destroy(head);    
+    return 0;
+}
+

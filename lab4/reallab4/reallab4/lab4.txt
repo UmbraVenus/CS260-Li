@@ -1,0 +1,65 @@
+9 items:
+151, 133, 170, 29, 44, 5, 23, 156, 147
+total = 858
+
+
+Adding151
+
+Adding133
+
+Adding170
+
+Adding29
+
+Adding44
+
+Adding5
+
+Adding23
+
+Adding156
+
+Adding147
+sum() =   === Summing Iteratively
+Current Sum is ....151
+Current Sum is ....284
+Current Sum is ....454
+Current Sum is ....483
+Current Sum is ....527
+Current Sum is ....532
+Current Sum is ....555
+Current Sum is ....711
+858
+sumR() =  === Summing Recursively
+284
+454
+483
+527
+532
+555
+711
+858
+858
+
+
+int LinkedList::sumR(){
+    cout << " === Summing Recursively" << endl;
+    int first = head->value;
+    if (head)
+    {
+        sumr += first; 
+    }
+    return _sumR(head->next);
+}
+
+int LinkedList::_sumR(Node* node){
+    if(node->next){
+        sumr += node->value;
+	cout << sumr << endl;
+        return _sumR(node->next);
+    }else{
+	sumr += node->value;
+	cout << sumr << endl;
+	return sumr;
+}
+}
