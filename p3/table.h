@@ -18,8 +18,10 @@ public:
 	Table(Table& aTable);
 	~Table();
 
+    void add( website& aStudent);
+
 /*
-	void add( website& aStudent);
+	
 	
 	bool remove();
 	bool   retrieve(char   *  topic_keyword,   website   all_matches[],   int & num_found);

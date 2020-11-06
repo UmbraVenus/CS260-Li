@@ -1,14 +1,14 @@
 CC = g++
 CPPFLAGS = -std=c++11 -g -Wall
-OBJTS = app.o student.o table.o 
+OBJTS = app.o website.o table.o 
 
 app: $(OBJTS)
 
-app.o: student.h table.h
+app.o: website.h table.h
 
-student.o: student.h
+website.o: website.h
 
-table.o: table.h student.h
+table.o: table.h website.h
 
 clean:
 	rm app *.o

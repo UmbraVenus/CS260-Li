@@ -47,7 +47,8 @@ void Table::destroyChain(Node *& currHead)
 		currHead = nullptr;
 	}
 }
-/*
+
+
 void Table::add(website& aStudent)
 {
 	int 	index = calculateIndex(aStudent.getName());	
@@ -56,7 +57,7 @@ void Table::add(website& aStudent)
 	aTable[index] = newNode;
 	size++;
 }
-*/
+
 
 /*
 A naive hashing function that only adds the ASCII value of each char in the
@@ -67,13 +68,6 @@ int Table::calculateIndex(char * key)
 {
 	int hashingResult;
 
-	//version 1
-	hashingResult = 0;
-	for(int i=0; i<strlen(key); i++)
-	{
-		hashingResult += key[i];
-	}
-
 	//version 2
 	hashingResult = 0;
 	int	keyLength = strlen(key);
@@ -82,17 +76,11 @@ int Table::calculateIndex(char * key)
 		hashingResult += key[i];
 	}
 
-	//version 3
-	hashingResult = 0;
-	for(; *key != '\0'; key++)
-	{
-		hashingResult += *key;
-	}	
-
 	return hashingResult % currCapacity;
 }
 
 
+/*
 void Table::copyChain(Node * srcHead, Node *& destHead)
 {
 	if(srcHead)
@@ -101,6 +89,7 @@ void Table::copyChain(Node * srcHead, Node *& destHead)
 		copyChain(srcHead->next, destHead->next);
 	}
 }
+*/
 
 ostream& operator<< (ostream& out, Table& srcTable)
 {
@@ -126,12 +115,15 @@ void Table::displayChain(ostream& out, Node * currHead)
 void Table::loadFromFile(char * fileName)
 {
 	ifstream 	in;
-	website		currStudent;
+	website		currWebsite;
 	const int 	MAX_CHAR = 101;
 	char		currName[MAX_CHAR];
-	float		currGpa;
+    char currAddress[MAX_CHAR];
+    char currSummary[MAX_CHAR];
+    char currReview[MAX_CHAR];
+    int currRating;
 
-	in.open(fileName);
+    in.open(fileName);
 	if(!in)
 	{
 		cerr << "Fail to open " << fileName << " for reading!" << endl;
@@ -139,16 +131,25 @@ void Table::loadFromFile(char * fileName)
 	}
 
 	in.get(currName, MAX_CHAR, ';');
-	while(!in.eof())
-	{
+    in.get(currAddress, MAX_CHAR, ';');
+    in.get(currSummary, MAX_CHAR, ';');
+    in.get(currReview, MAX_CHAR, ';');
+    while (!in.eof())
+    {
 		in.get();
-		in >> currGpa;
+		in >> currRating;
 		in.ignore(MAX_CHAR, '\n');
 		
-		currStudent.setName(currName);
-		
-		
-		in.get(currName, MAX_CHAR, ';');
+		currWebsite.setName(currName);
+        currWebsite.setAddress(currAddress);
+        currWebsite.setSummary(currSummary);
+        currWebsite.setReview(currReview);
+        add(currWebsite);
+
+        in.get(currName, MAX_CHAR, ';');
+        in.get(currAddress, MAX_CHAR, ';');
+        in.get(currSummary, MAX_CHAR, ';');
+        in.get(currReview, MAX_CHAR, ';');
 	}
 	in.close();
 }

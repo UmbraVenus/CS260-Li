@@ -34,7 +34,7 @@ public:
     char * getReview();
     int getRating();
 
-	website& operator= (website& aWebsite);
+
 	friend ostream& operator<< (ostream& out, website& aWebsite);	
 
 private:

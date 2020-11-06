@@ -23,6 +23,12 @@ const char choice5[] = "5. Only displaying matched wesbite ";
 const char choice6[] = "6. Display all stored websites ";
 
 int main(){
+
+    Table webs;
+    char fileName[] = "website.txt";
+    webs.loadFromFile(fileName);
+    cout << webs << endl;
+
     int choice = mainMenu();
 
     while (choice > 0)
@@ -80,7 +86,6 @@ int main(){
             }
         }
         
-        // PromoteStack.displayStack();
 		choice = mainMenu();
 	}
 	cout << "\n!!!!Boom! Your program exploded!!!!\n" << endl;
