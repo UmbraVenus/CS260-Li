@@ -126,14 +126,28 @@ void website::setReview(char * review)
 	strcpy(this->review, review);
 }
 
+website& website::operator= (website& aStudent)
+{
+	if(this == &aStudent)
+	{
+		return *this;
+	}
+
+	setName(aStudent.name);
+	setAddress(aStudent.address);
+	setSummary(aStudent.summary);
+	setReview(aStudent.review);
+	setRating(aStudent.rating);
+	return *this;
+}
 
 ostream& operator<< (ostream& out, website& aWebsite)
 {
-	out << "== [Website] " << aWebsite.name << endl;
-    out << aWebsite.address << endl;
-    out << aWebsite.summary << endl;
-    out << aWebsite.review << endl;
-    out << aWebsite.rating << endl;
+	out << "== [Website Name] " << aWebsite.getName() << endl;
+    out << "== [Website Address] " << aWebsite.getAddress() << endl;
+    out << "== [Website Summary] " << aWebsite.getSummary()<< endl;
+    out << "== [Website Review] " << aWebsite.getReview() << endl;
+    out << "== [Website Rating] " << aWebsite.getRating() << endl;
     return out;
 }
 

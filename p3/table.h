@@ -18,7 +18,20 @@ public:
 	Table(Table& aTable);
 	~Table();
 
-    void add( website& aStudent);
+	void AddingPrompt();
+	void add(website &aStudent);
+	void loadFromFile(char * fileName);
+
+	void retrieveCategory(website results[]);
+
+	void modify();
+
+	void remove();
+
+	void displayCategory(website results[]);
+
+	Table& operator= (Table& aTable);
+    friend ostream& operator<< (ostream& out, Table& aTable);
 
 /*
 	
@@ -48,10 +61,7 @@ public:
 
 */
 
-	void loadFromFile(char * fileName);
-
-
-    friend ostream& operator<< (ostream& out, Table& aTable);
+	
 
 private:
 	struct Node

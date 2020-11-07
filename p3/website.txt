@@ -1,50 +1,45 @@
-Data Structure
-www.datastructure.com
-Summary Of datastructure
-good site; 
-5
-Art
-www.publicartarchive.org/search-explore/
-Art archive
-good site
-5
-Art
-www.artworkarchive.com/
-Art archive
+Data Structure;
+www.datastructure.com;
+Summary Of datastructure;
 good site;
 5
-Art
-www.nga.gov/research/gallery-archives.html; 
-Art archive; 
+Data Structure;
+www.adatastructure.com;
+Summary Of datastructure;
 good site;
 5
-Art
-www.aaa.si.edu/; 
-Art archive; 
+Data Structure;
+www.bdatastructure.com;
+Summary Of datastructure;
 good site;
 5
-Art
-artattendant.com/archive-services/diy-art-archiving/; 
-Art archive; 
+Data Structure;
+www.cdatastructure.com;
+Summary Of datastructure;
 good site;
 5
-Art
-artattendant.com/archive-services/diy-art-archiving/; 
-Art archive; 
+Data Structure;
+www.ddatastructure.com;
+Summary Of datastructure;
 good site;
 5
-Art
-artattendant.com/archive-services/diy-art-archiving/; 
-Art archive; 
+Art History;
+www.publicartarchive.org/search-explore/;
+Art archive;
 good site;
 5
-Art
-artattendant.com/archive-services/diy-art-archiving/; 
-Art archive; 
+Art;
+www.apublicartarchive.org/search-explore/;
+Art archive;
 good site;
 5
-Art
-artattendant.com/archive-services/diy-art-archiving/; 
-Art archive; 
+Art;
+www.bpublicartarchive.org/search-explore/;
+Art archive;
+good site;
+5
+Art;
+www.cpublicartarchive.org/search-explore/;
+Art archive;
 good site;
 5

@@ -48,6 +48,38 @@ void Table::destroyChain(Node *& currHead)
 	}
 }
 
+void Table::AddingPrompt(){
+	website		currWebsite;
+	const int 	MAX_CHAR = 250;
+	char		currName[MAX_CHAR];
+    char currAddress[MAX_CHAR];
+    char currSummary[MAX_CHAR];
+    char currReview[MAX_CHAR];
+	char currNums[MAX_CHAR];
+	int currRating;
+
+	cout << " ==== Input the Website Name (Category) >> ";
+  cin.getline(currName, MAX_CHAR);
+    
+  cout << " ==== Input the website address >> ";
+  cin.getline(currAddress, MAX_CHAR);
+    
+	cout << " ==== Input the website summary >> ";
+  cin.getline(currSummary, MAX_CHAR);
+
+  cout << " ==== Input the website review (in words) >> ";
+  cin.getline(currReview, MAX_CHAR);
+
+  cout << " ==== Input the website summary (on a scale of 1-5) >> ";
+  cin.getline(currNums, MAX_CHAR);
+  currRating = atoi(currNums);
+  currWebsite.setName(currName);
+    	currWebsite.setAddress(currAddress);
+        currWebsite.setSummary(currSummary);
+        currWebsite.setReview(currReview);
+		currWebsite.setRating(currRating);
+		add(currWebsite);
+}
 
 void Table::add(website& aStudent)
 {
@@ -58,6 +90,26 @@ void Table::add(website& aStudent)
 	newNode->next = aTable[index];
 	aTable[index] = newNode;
 	size++;
+}
+
+// Retrieve all websites based on the topic keyword supplied
+void Table::retrieveCategory(website results[]){
+
+}
+
+// Modify the review and rating for a particular topic and website match
+void Table::modify(){
+
+}
+
+// Remove all websites with a 1 star rating
+void Table::remove(){
+
+}
+
+// Only displaying matched wesbite
+void Table::displayCategory(website results[]){
+
 }
 
 
@@ -79,8 +131,25 @@ int Table::calculateIndex(char * key)
 	return hashingResult % currCapacity;
 }
 
+Table& Table::operator= (Table& tableSrc)
+{
+	if(this == &tableSrc)
+		return *this;
+	if(this->aTable)
+	{
+		destroy();
+	}
+	size = tableSrc.size;
+	currCapacity = tableSrc.currCapacity;
+	aTable = new Node*[currCapacity];
+	for(int i=0; i<currCapacity; i++)
+	{
+		aTable[i] = nullptr;
+		copyChain(tableSrc.aTable[i], this->aTable[i]);
+	}
+	return *this;
+}	
 
-/*
 void Table::copyChain(Node * srcHead, Node *& destHead)
 {
 	if(srcHead)
@@ -89,7 +158,7 @@ void Table::copyChain(Node * srcHead, Node *& destHead)
 		copyChain(srcHead->next, destHead->next);
 	}
 }
-*/
+
 
 ostream& operator<< (ostream& out, Table& srcTable)
 {
@@ -107,12 +176,7 @@ void Table::displayChain(ostream& out, Node * currHead)
 {
 	if(currHead)
 	{
-		out << (*currHead->data).getName() << endl;
-		out << (*currHead->data).getAddress() << endl;
-		out << (*currHead->data).getSummary() << endl;
-		out << (*currHead->data).getReview() << endl;
-		out << (*currHead->data).getRating() << endl;
-		
+		out << *(currHead->data) << endl;
 		displayChain(out, currHead->next);
 	}
 }

@@ -26,6 +26,7 @@ int main(){
 
     cout << "Enetering" << endl;
     Table webs;
+    website results[MAX_CHAR];
     char fileName[] = "website.txt";
     cout << "Enetering" << endl;
     webs.loadFromFile(fileName);
@@ -39,40 +40,47 @@ int main(){
         switch (choice)
         {
             cout << "--------------------" << endl;
-            case 1: 
+            cout << "You have chosen: " << endl;
+            case 1:
             {
                 // Insert a new website by topic
                 cout << choice1 << endl;
+                webs.AddingPrompt();
                 break;
             }
             case 2: 
             {
                 // Retrieve all websites based on the topic keyword supplied
                 cout << choice2 << endl;
+                webs.retrieveCategory(results);
                 break;
             }
 			case 3:
             {
                 // Modify the review and rating for a particular topic and website match
                 cout << choice3 << endl;
+                webs.modify();
                 break;
             }
 			case 4: 
             {
                 // Remove all websites with a 1 star rating
-                cout << choice4 << endl << endl;
+                cout << choice4  << endl;
+                webs.remove();
                 break;
             }
 			case 5: 
             {
                 // Only displaying matched wesbite
                 cout << choice5 << endl;
+                webs.displayCategory(results);
                 break;
             }
             case 6: 
             {
                 // Display all stored websites
                 cout << choice6 << endl;
+                cout << webs << endl;
                 break;
             }
             case 7: //exit
