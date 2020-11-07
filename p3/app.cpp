@@ -24,9 +24,12 @@ const char choice6[] = "6. Display all stored websites ";
 
 int main(){
 
+    cout << "Enetering" << endl;
     Table webs;
     char fileName[] = "website.txt";
+    cout << "Enetering" << endl;
     webs.loadFromFile(fileName);
+    cout << "Enetering" << endl;
     cout << webs << endl;
 
     int choice = mainMenu();

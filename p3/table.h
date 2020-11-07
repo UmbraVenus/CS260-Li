@@ -66,7 +66,7 @@ private:
 		Node *		next;
 	};
 	Node** 				aTable;
-	const static int	INIT_CAP = 10;
+	int	INIT_CAP = 10;
 	int					currCapacity;
 	int 				size;
 

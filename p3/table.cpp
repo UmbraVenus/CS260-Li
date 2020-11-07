@@ -51,7 +51,9 @@ void Table::destroyChain(Node *& currHead)
 
 void Table::add(website& aStudent)
 {
-	int 	index = calculateIndex(aStudent.getName());	
+	cout << "adding " << endl;
+	int index = calculateIndex(aStudent.getName());
+	cout << aStudent.getName() << " added." << endl;
 	Node *	newNode = new Node(aStudent);
 	newNode->next = aTable[index];
 	aTable[index] = newNode;
@@ -68,13 +70,11 @@ int Table::calculateIndex(char * key)
 {
 	int hashingResult;
 
-	//version 2
 	hashingResult = 0;
-	int	keyLength = strlen(key);
-	for(int i=0; i<keyLength; i++)
+	for(; *key != '\0'; key++)
 	{
-		hashingResult += key[i];
-	}
+		hashingResult += *key;
+	}	
 
 	return hashingResult % currCapacity;
 }
@@ -107,29 +107,60 @@ void Table::displayChain(ostream& out, Node * currHead)
 {
 	if(currHead)
 	{
-		out << *(currHead->data) << endl;
+		out << (*currHead->data).getName() << endl;
+		out << (*currHead->data).getAddress() << endl;
+		out << (*currHead->data).getSummary() << endl;
+		out << (*currHead->data).getReview() << endl;
+		out << (*currHead->data).getRating() << endl;
+		
 		displayChain(out, currHead->next);
 	}
 }
 
 void Table::loadFromFile(char * fileName)
 {
-	ifstream 	in;
+	cout << "Loading" << endl;
+	ifstream in;
 	website		currWebsite;
-	const int 	MAX_CHAR = 101;
+	const int 	MAX_CHAR = 250;
 	char		currName[MAX_CHAR];
     char currAddress[MAX_CHAR];
     char currSummary[MAX_CHAR];
     char currReview[MAX_CHAR];
-    int currRating;
+	char currNums[MAX_CHAR];
+	int currRating;
 
-    in.open(fileName);
+	in.open(fileName);
 	if(!in)
 	{
 		cerr << "Fail to open " << fileName << " for reading!" << endl;
 		exit(1);
 	}
 
+	while(!in.eof()){
+      in.getline(currName, MAX_CHAR);
+      in.getline(currAddress, MAX_CHAR);
+      in.getline(currSummary, MAX_CHAR);
+      in.getline(currReview, MAX_CHAR);
+	  in.getline(currNums, MAX_CHAR);
+	  currRating = atoi(currNums);
+	  
+	  	currWebsite.setName(currName);
+    	currWebsite.setAddress(currAddress);
+        currWebsite.setSummary(currSummary);
+        currWebsite.setReview(currReview);
+		currWebsite.setRating(currRating);
+		cout << "Adddiiiing" << endl;
+		add(currWebsite);
+      
+      cout << currWebsite.getName() << " added." << endl;
+	  cout << currWebsite.getAddress() << endl;
+		cout << currWebsite.getSummary() << endl;
+		cout << currWebsite.getReview() << endl;
+		cout << currWebsite.getRating() << endl;
+  }
+
+/*
 	in.get(currName, MAX_CHAR, ';');
     in.get(currAddress, MAX_CHAR, ';');
     in.get(currSummary, MAX_CHAR, ';');
@@ -144,13 +175,16 @@ void Table::loadFromFile(char * fileName)
         currWebsite.setAddress(currAddress);
         currWebsite.setSummary(currSummary);
         currWebsite.setReview(currReview);
-        add(currWebsite);
+		currWebsite.setRating(currRating);
+		cout << "Adddiiiing" << endl;
+		add(currWebsite);
 
-        in.get(currName, MAX_CHAR, ';');
+		in.get(currName, MAX_CHAR, ';');
         in.get(currAddress, MAX_CHAR, ';');
         in.get(currSummary, MAX_CHAR, ';');
         in.get(currReview, MAX_CHAR, ';');
 	}
+	*/
 	in.close();
 }
 
