@@ -143,11 +143,11 @@ website& website::operator= (website& aStudent)
 
 ostream& operator<< (ostream& out, website& aWebsite)
 {
-	out << "== [Website Name] " << aWebsite.getName() << endl;
-    out << "== [Website Address] " << aWebsite.getAddress() << endl;
-    out << "== [Website Summary] " << aWebsite.getSummary()<< endl;
-    out << "== [Website Review] " << aWebsite.getReview() << endl;
-    out << "== [Website Rating] " << aWebsite.getRating() << endl;
+	out  << aWebsite.getName() << endl;
+    out << aWebsite.getAddress() << endl;
+    out  << aWebsite.getSummary()<< endl;
+    out  << aWebsite.getReview() << endl;
+    out  << aWebsite.getRating() << endl;
     return out;
 }
 

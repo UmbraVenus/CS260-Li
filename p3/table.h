@@ -28,39 +28,9 @@ public:
 
 	void remove();
 
-	void displayCategory(website results[]);
-
 	Table& operator= (Table& aTable);
     friend ostream& operator<< (ostream& out, Table& aTable);
-
-/*
-	
-	
-	bool remove();
-	bool   retrieve(char   *  topic_keyword,   website   all_matches[],   int & num_found);
-	int getSize();
-	
-	
-
-
-    1.Constructor
-2.Destructor (deallocate the hash table)
-
-// Where topic is the key
-3.Insert  a  new  website  by  topic (add  website’s  information  into  the  hash table)
-
-4.Retrieve (retrieve all websites based on the topic keyword supplied)
-
-5.Edit (modify the review and rating for a particular topic and website match)
-
-6.Remove (remove all websites with a 1-star rating)
-
-7.Display (only displaying matches, based on the topic keyword)
-
-8.Display all
-
-*/
-
+	void displayCategory();
 	
 
 private:
@@ -84,8 +54,10 @@ private:
 	void destroy();
 	void destroyChain(Node *& currHead);
 	void copyChain(Node * srcHead, Node *& destHead);
-	void displayChain(ostream& out, Node * currHead);
-	void writeOutChain(ostream& out, Node * currHead);
+	void displayChain(Node * currHead);
+	void getEntry(Node *currHead);
+	void removeChain(Node *removeChain);
+	void writeOutChain(ostream &out, Node *currHead);
 };
 
 #endif 

@@ -70,7 +70,7 @@ void Table::AddingPrompt(){
   cout << " ==== Input the website review (in words) >> ";
   cin.getline(currReview, MAX_CHAR);
 
-  cout << " ==== Input the website summary (on a scale of 1-5) >> ";
+  cout << " ==== Input the website rating (on a scale of 1-5) >> ";
   cin.getline(currNums, MAX_CHAR);
   currRating = atoi(currNums);
   currWebsite.setName(currName);
@@ -85,7 +85,6 @@ void Table::add(website& aStudent)
 {
 	cout << "adding " << endl;
 	int index = calculateIndex(aStudent.getName());
-	cout << aStudent.getName() << " added." << endl;
 	Node *	newNode = new Node(aStudent);
 	newNode->next = aTable[index];
 	aTable[index] = newNode;
@@ -94,24 +93,124 @@ void Table::add(website& aStudent)
 
 // Retrieve all websites based on the topic keyword supplied
 void Table::retrieveCategory(website results[]){
+	int 	MAX_CHAR = 250;
+	char* topic;
+	Node *currHead;
+	int size = 6;
+	results = new website[MAX_CHAR];
 
+	cout << " ==== Input the topic >> ";
+  	cin.getline(topic, MAX_CHAR);
+
+	cout << "\nRetrieving the Category..." << endl;
+	for (int i = 0; i < currCapacity; i++){
+		cout << i << "Finding " << topic << endl;
+		if(aTable[i]){
+			cout << aTable[i]->data->getName() << "1" << endl;
+			cout << aTable[i]->data->getName() << "---" << topic << "---" << endl;
+			if (strcmp(aTable[i]->data->getName(),topic)==0)
+			{
+				cout << "Starting retrieveing" << topic << endl;
+				currHead = aTable[i];
+				
+				for (int j = 0; currHead; j++){
+					cout << j << currHead->data->getName() << endl;
+					size *= 5;
+					cout << "hello" << endl;
+					results[j] = *currHead->data;
+					currHead = currHead->next;
+				}
+				cout << "please" << endl;
+				
+				cout << "Done" << endl;
+				cout << "Finished Retrieveing" << endl;
+			}
+			
+		}
+		
+		cout << "666Finished Retrieveing\n" << endl;
+	}
 }
 
 // Modify the review and rating for a particular topic and website match
 void Table::modify(){
+	int 	MAX_CHAR = 250;
+	char topic[MAX_CHAR];
+	char address[MAX_CHAR];
 
+	cout << " ==== Input the topic >> ";
+	cin.getline(topic, MAX_CHAR);
+	cout << topic;
+
+	int n = calculateIndex(topic);
+	cout << "hello";
+	getEntry(aTable[n]);
+}
+
+void Table::getEntry(Node * currHead)
+{
+	int 	MAX_CHAR = 10;
+	char choice[MAX_CHAR];
+	char review[MAX_CHAR];
+	char currNums[MAX_CHAR];
+	int currRating;
+
+	if(currHead)
+	{
+		cout << currHead->data->getAddress() << endl;
+		cout << " ==== Is this the right website address? (Enter y/n) >> ";
+		cin.getline(choice, MAX_CHAR);
+		if(strcmp("y", choice)==0){
+			cout << " ==== Input the new website review (in words) >> ";
+  			cin.getline(review, MAX_CHAR);
+			cout << " ==== Input in the form of 'google.com' >> " << endl;
+			cout << " ==== Input the new website rating(on a scale of 1-5)>> ";
+			cin.getline(currNums, MAX_CHAR);
+			currRating = atoi(currNums);
+			currHead->data->setReview(review);
+			currHead->data->setRating(currRating);
+		}
+	}
 }
 
 // Remove all websites with a 1 star rating
 void Table::remove(){
-
+	for(int i=0; i<currCapacity; i++)
+	{
+		removeChain(aTable[i]);
+	}
 }
+
+void Table::removeChain(Node * currHead)
+{
+	if(currHead)
+	{
+		if(currHead->data->getRating() == 1){
+			currHead->data->setName("removed");
+			currHead->data->setAddress("removed");
+			currHead->data->setSummary("removed");
+			currHead->data->setReview("removed");
+			currHead->data->setRating(0);
+		}
+		removeChain(currHead->next);
+	}
+}
+
 
 // Only displaying matched wesbite
-void Table::displayCategory(website results[]){
+void Table::displayCategory(){
+	int 	MAX_CHAR = 250;
+	char topic[MAX_CHAR];
+	Node* currHead;
 
+	cout << " ==== Input the topic >> ";
+	cin.getline(topic, MAX_CHAR);
+	cout << topic;
+
+	int n = calculateIndex(topic);
+	cout << "hello";
+	displayChain(aTable[n]);
 }
-
 
 /*
 A naive hashing function that only adds the ASCII value of each char in the
@@ -166,18 +265,18 @@ ostream& operator<< (ostream& out, Table& srcTable)
 	for(int i=0; i<srcTable.currCapacity; i++)
 	{
 		out << "Chain #" << i << " ... " << endl;
-		srcTable.displayChain(out, srcTable.aTable[i]);
+		srcTable.displayChain(srcTable.aTable[i]);
 		out << endl;
 	}
 	return out;
 }
 
-void Table::displayChain(ostream& out, Node * currHead)
+void Table::displayChain(Node * currHead)
 {
 	if(currHead)
 	{
-		out << *(currHead->data) << endl;
-		displayChain(out, currHead->next);
+		cout << *(currHead->data) << endl;
+		displayChain(currHead->next);
 	}
 }
 

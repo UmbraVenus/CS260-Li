@@ -14,19 +14,19 @@ using namespace std;
 
 int mainMenu();
 
-const int MAX_CHAR = 250;
+const int MAX_CHAR = 1000;
 const char choice1[] = "1. Insert a new website by topic ";  
-const char choice2[] = "2. Retrieve all websites based on the topic keyword supplied ";
+const char choice2[] = "2. Only displaying matched wesbite  ";
 const char choice3[] = "3. Modify the review and rating for a particular topic and website match ";
 const char choice4[] = "4. Remove all websites with a 1 star rating ";
-const char choice5[] = "5. Only displaying matched wesbite ";
+const char choice5[] = "5. Retrieve all websites based on the topic keyword supplied ";
 const char choice6[] = "6. Display all stored websites ";
 
 int main(){
 
     cout << "Enetering" << endl;
     Table webs;
-    website results[MAX_CHAR];
+    website* results;
     char fileName[] = "website.txt";
     cout << "Enetering" << endl;
     webs.loadFromFile(fileName);
@@ -48,7 +48,7 @@ int main(){
                 webs.AddingPrompt();
                 break;
             }
-            case 2: 
+            case 5: 
             {
                 // Retrieve all websites based on the topic keyword supplied
                 cout << choice2 << endl;
@@ -69,11 +69,12 @@ int main(){
                 webs.remove();
                 break;
             }
-			case 5: 
+			case 2: 
             {
+                
                 // Only displaying matched wesbite
                 cout << choice5 << endl;
-                webs.displayCategory(results);
+                webs.displayCategory();
                 break;
             }
             case 6: 
@@ -96,7 +97,6 @@ int main(){
                 break;
             }
         }
-        
 		choice = mainMenu();
 	}
 	cout << "\n!!!!Boom! Your program exploded!!!!\n" << endl;
@@ -118,10 +118,11 @@ int mainMenu()
 	cout << "7. Exit the program" << endl;
 
 	int selection;
-	cout << "\n ==== Enter 1-7 to make your selection ==== " << endl;
-	cout << " ==== >> " << endl;
-	cin >> selection;
-	//cin only gets the first component, use getline to get everything
-	cin.ignore(1000, '\n');
-	return selection;
+    char c[MAX_CHAR];
+    cout << "\n ==== Enter 1-7 to make your selection ==== " << endl;
+    cout << " ==== >> " << endl;
+    cin.getline(c, MAX_CHAR);
+    //cin only gets the first component, use getline to get everything
+    selection = atoi(c);
+    return selection;
 }
