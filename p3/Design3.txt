@@ -1,0 +1,99 @@
+﻿/*
+    Name:       Shijie Ren
+    Instructor: Li Liang
+    Class:      CS260
+    Assignment: Project3/Design.txt
+*/
+
+
+
+
+======= Design ====== 
+I would create a hash table using chaining to quickly find the topics I need in all my favorite websites.
+For example, for all topic named “Data Structures”, return all websites I have saved regarding “Data Structures”, returns its website address, summary, review, and rating.
+
+
+
+
+====================================================
+1) What functions your ADT will need to have
+
+
+I would need to have a website data type to store websites, with “Topic Name, website address, summary, review, and rating”.
+
+
+1.Constructor
+2.Destructor (deallocate the hash table)
+
+
+// Where topic is the key
+3.Insert  a  new  website  by  topic (add  website’s  information  into  the  hash table)
+
+
+4.Retrieve (retrieve all websites based on the topic keyword supplied)
+
+
+5.Edit (modify the review and rating for a particular topic and website match)
+==== Retrieve first, then find the particular website, ask the user if that is the website match(findbyAddress)
+
+
+6.Remove (remove all websites with a 1-star rating)
+==== Retrieve first, then find all websites with less than one star rating(findbyRating)
+
+
+7.Display (only displaying matches, based on the topic keyword)
+==== Retrieve first, then display
+
+
+8.Display all
+
+
+====================================================
+2) How each function will report success/failure back to the calling routine
+
+
+I wrote each function with distinct messages that would be displayed for each procedure, so if things go wrong I know which step it is.
+
+
+====================================================
+3) How each function will shield the client program from the details of the data structure
+
+
+For each function, the most important thing is to not let the client program access the node structure. 
+
+
+===== Test Plan =====
+I created a user interface that can be accessed by pressing 1-7. 
+
+
+At first, a queue will be populated from a txt file; a promotion Stack will be populated serves as a list of individuals to be contacted, and a contacted stack serves as a list of individuals that have already been contacted.
+
+
+When the user presses 1, they would be able to add their own new entry, a website to the table, the hashing function should be able to map it into the appropriate index, and when it could be seen when chosen display all
+
+
+5.Retrieve (retrieve all websites based on the topic keyword supplied)
+Fill the external website array with the website data
+
+
+3.Edit (modify the review and rating for a particular topic and website match)
+Find the correct topic array, then display the website in a loop, then if the user finds the appropriate website, they would then edit the review and rating, this is due to the fact that website address could potentially be really long, causing a lot of typos. With the data set I have in my text file, this would be a good solution; However, if I have more time to optimize for a bigger data set, I would either 1.give each website a number, and have the user input the number, or 2. Make it so that when the user makes a typo, I could suggest the next nearest website and asks if the user would like to proceed.
+
+
+4.Remove (remove all websites with a 1-star rating)
+==== find all websites with less than one star rating(findbyRating)
+Go through all websites in the table then delete all entries with less than one star rating
+
+
+2.Display (only displaying matches, based on the topic keyword)
+==== Retrieve first, then display
+Display the retrieved array
+
+
+6.Display all
+When the user presses 6, the whole table should be shown, including the website we added.
+
+
+
+
+When the user enters 7, the program will exit.

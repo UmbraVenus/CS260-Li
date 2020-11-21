@@ -1,0 +1,56 @@
+Here is the original list: 2 -> 2 -> 41 -> 49 -> 84 -> 30 -> 28 -> 78 -> 46 -> 33 -> 71 -> 5 -> 44 -> 80 -> 40 -> 2
+
+This list contains 16 number of items 
+count16
+count recursivelyEnd of Linked List
+16
+sum635
+sum recursivelyEnd of Linked List
+635
+
+
+The resulting list is... 2 -> 2 -> 41 -> 49 -> 84 -> 30 -> 28 -> 78 -> 46 -> 33 -> 71 -> 5 -> 44 -> 80 -> 40 -> 2
+
+This list contains 16 number of items 
+The sum of all data is: 635
+# nodes freed: 16
+
+
+int countR(node *head)
+{
+    if (!head){
+        cout << "Can't count! Error!" << endl;
+        return 0;
+    }
+    countR(head->next, head, 1);
+}
+
+int countR(node *curr, node *head, int nums){
+    if (curr == head){
+        cout << "End of Linked List" << endl;
+        return nums;
+    }
+    else{
+        nums++;
+        return countR(curr->next, head, nums);
+    }
+}
+
+int sumR(node *head){
+    if (!head){
+        cout << "Can't count! Error!" << endl;
+        return 0;
+    }
+    sumR(head->next, head, head->data);
+}
+
+int sumR(node *curr, node *head, int nums){
+    if (curr == head){
+        cout << "End of Linked List" << endl;
+        return nums;
+    }
+    else{
+        nums += curr->data;
+        return sumR(curr->next, head, nums);
+    }
+}

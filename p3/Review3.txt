@@ -1,0 +1,65 @@
+﻿/*
+    Name:       Shijie Ren
+    Instructor: Li Liang
+    Class:      CS260
+    Assignment: Project3/Review.txt
+*/
+
+
+
+
+1) How well did the data structure selected to perform for the assigned application? 
+
+
+* It did the job really well, as those were pre-chosen, it’s easy to get the size of the table, as well as the size of the websites
+
+
+2) Would a different data structure work better? If so, which one and why…
+
+
+* There are different ways of designing hash tables. What’s more, I believe if we can also use the standard library maps or unordered maps, with the value being an array or linked list.
+
+
+3) What was efficient about your design and use of the data structure?
+
+
+* I tried to keep each function as independently as possible. There are many functions where I could have written in one big function, but I split them into many small functions instead. I find it easier to test.
+
+
+4) What would you do differently if you had more time to solve the problem?
+
+
+* I would try to experiment with different ways of creating hash functions, generating the index for the hash table. And I would also create a much bigger data file to really test my data structure thoroughly.
+* I would also try my best to optimize for potentially typos/case sensitive user inputs etc
+
+
+5) What functions are recursive?
+* Display Chain
+* And there are other functions that are based on similar concepts, such as removeChain
+
+
+==== Review and Thoughts ====
+
+
+I tried to use VScode editor remotely through the remote ssh plugin, however, I believe I would need to edit some attributes of the server itself and I did not have the permission for that. I understand the vim is much better but I am curious if it’s possible.
+
+
+With the experience of the last 2 projects, instead of diving straight to coding, I tried my best to come up with the logic in the design.txt at first. It does help a lot and reduces a lot of unnecessary efforts.
+
+
+I have also found out that it’s best to keep a consistent system among similar data structures/classes to avoid less confusion.I think it’s much better to have one really optimized dynamic array implementation and tons of unorganized ones. I am not quite there yet but I hope I will get closer.
+
+
+Instead of writing out basic implementations for all functions, I only wrote load from the text file, and display all websites in the table first. It worked a lot better than before in terms of testing and saved me a lot of time. I think most importantly I need to have an efficient method instead of heading aimlessly.
+
+
+I do want to test it out on a much bigger data set if I have the time, however, I am not sure how to generate such files, or if I need to scrape certain websites to get their information, etc.
+
+
+I would also be really interested in the performance of different ways of implementing hash tables by implementing and comparing them myself. I also wonder if there is any function I can write, or call to show how much time or memory does my program takes.
+
+
+I would also love to have better comments, however, due to the fact that I am nearsighted, I found myself needing much bigger fonts than others, and having too many comments can hinder me from seeing the entire code block. I need to explore what is the best practice in this situation for a potential workaround.
+
+
+There is one problem that I have been having with gdb and Valgrind, though I have been getting better at using them, however, sometimes I feel like there are many more functions that I could have utilized better, we didn’t really use those at my last class,  though I guess it would only come with practice.
