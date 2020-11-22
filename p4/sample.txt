@@ -1,0 +1,90 @@
+﻿Data Structure;
+datastructure;
+www.datastructure.com;
+Summary Of datastructure;
+good site;
+5
+Data Structure;
+adatastructure;
+www.adatastructure.com;
+Summary Of datastructure;
+good site;
+5
+Data Structure;
+bdatastructure;
+www.bdatastructure.com;
+Summary Of datastructure;
+good site;
+5
+Data Structure;
+cdatastructure;
+www.cdatastructure.com;
+Summary Of datastructure;
+good site;
+5
+Data Structure;
+ddatastructure;
+www.ddatastructure.com;
+Summary Of datastructure;
+good site;
+5
+Art History;
+publicartarchive;
+www.publicartarchive.org/search-explore/;
+Art archive;
+good site;
+5
+Art;
+apublicartarchive;
+www.apublicartarchive.org/search-explore/;
+Art archive;
+good site;
+5
+Art;
+bpublicartarchive;
+www.bpublicartarchive.org/search-explore/;
+Art archive;
+good site;
+5
+Art;
+cpublicartarchive;
+www.cpublicartarchive.org/search-explore/;
+Art archive;
+good site;
+5
+Grass;
+grassmaintenance;
+www.grassmaintenance.com;
+Grass maintenance instructions;
+Ok but could be a bit more detailed;
+4
+Portland Air;
+portlandairindex;
+www.portlandairindex.com;
+The daily air quality index of portland;
+good, updated daily;
+5
+iphone;
+iphonereview;
+iphonereview.com;
+User review of all iphone models;
+there are some obvious bot reviews;
+2
+iphone;
+gameonios;
+www.gamesonios.com;
+expert reviews of games on ios;
+awesome, there are many guides as well;
+5
+business;
+portlandsmallbusiness;
+www.portlandsmallbusiness.com;
+reviews of portland small businesses;
+okay, but there are not that many businesses on there.
+3
+business;
+studentbusiness;
+www.studentbusiness.com;
+info on student started businesses;
+great info;
+5
